@@ -1,9 +1,10 @@
 package com.lilium.timer.playground;
 
+import com.lilium.timer.info.TimerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/timer")
@@ -19,5 +20,15 @@ public class PlaygroundController {
     @PostMapping("/runhelloworld")
     public void runHelloWorldJob() {
         service.runHelloWorldJob();
+    }
+
+    @GetMapping
+    public List<TimerInfo> getAllRunningTimers() {
+        return service.getAllRunningTimers();
+    }
+
+    @GetMapping("/{timerId}")
+    public TimerInfo getRunningTimer(@PathVariable String timerId) {
+        return service.getRunningTimer(timerId);
     }
 }
