@@ -31,4 +31,9 @@ public class PlaygroundController {
     public TimerInfo getRunningTimer(@PathVariable String timerId) {
         return service.getRunningTimer(timerId);
     }
+
+    @DeleteMapping("/{timerId}")
+    public Boolean deleteTimer(@PathVariable String timerId) {
+        return service.deleteTimer(timerId);
+    }
 }
