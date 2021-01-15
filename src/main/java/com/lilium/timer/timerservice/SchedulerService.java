@@ -82,6 +82,8 @@ public class SchedulerService {
             }
 
             jobDetail.getJobDataMap().put(timerId, info);
+
+            scheduler.addJob(jobDetail, true, true);
         } catch (final SchedulerException e) {
             LOG.error(e.getMessage(), e);
         }
